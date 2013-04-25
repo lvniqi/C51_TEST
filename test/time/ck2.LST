@@ -1,0 +1,86 @@
+C51 COMPILER V7.10   CK2                                                                   03/25/2013 17:47:32 PAGE 1   
+
+
+C51 COMPILER V7.10, COMPILATION OF MODULE CK2
+OBJECT MODULE PLACED IN ck2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ck2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /********************************************************************
+   2          * 文件名  ： 串口交互.c
+   3          * 描述    :  该文件实现通过单片机从电脑接收数据。通过数码管显示
+   4          该试验使用的晶振是11.0592,如果使用12M晶振，会出现串口接收
+   5          不正常的情况。原因是用12M晶振，波特率9600时的误差率达 8%
+   6          当下载这个程序到单片机时，单片机的最高为为乱码，是正常现象，
+   7          按一下复位键便可。是由于单片机下载也是通过串口下载引起的。
+   8          
+   9          ***********************************************************************/
+  10          #include"normal.h"
+  11          #include"led_4.h"
+  12          sbit idpdt_led1=P1^0;
+  13          sbit idpdt_led2=P1^1;
+  14          uchar Led[9]={0xff,0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  15          uchar timer;
+  16          int main(void)
+  17          {
+  18   1              uint i=0;
+  19   1              uchar flag=-1,flag2=1;
+  20   1              EA=1;//开总中断
+  21   1              RCAP2H=19456/256;
+  22   1              RCAP2L=19456%256;
+  23   1              ET2=1;          //开定时器2中断
+  24   1              TR2=1;          //开启定时器，并设置为自动重装载模式
+  25   1      //      TMOD=0x11;//设置定时器工作方式1
+  26   1      //      TH0=(65536-50000)/256;//定时50毫秒
+  27   1      //      TL0=(65536-50000)%256;//定时50毫秒
+  28   1      //      EA=1;//开总中断
+  29   1      //      ET0=1;//开定时器0中断
+  30   1      //      ET1=1;//开定时器1中断
+  31   1              //      EX0=1;//开外部中断0
+  32   1      //      TR0=1;//启动定时器0
+  33   1      //      TR1=1;//启动定时器0
+  34   1      //      IT0=1;//中断信号的输入方式
+  35   1              idpdt_led2=0;
+  36   1              while(1)
+  37   1              {
+  38   2                      if(timer==20)//定时1s
+  39   2                      {
+  40   3                              Led_set(i);
+  41   3                              i++;    
+  42   3                              timer=0;
+  43   3                      }
+  44   2                      Led_display();
+  45   2              }
+  46   1      }
+  47          /*void exter0() interrupt 0
+  48          {
+  49                  idpdt_led1=0;
+  50          }*/
+  51          /*void Error_ET0_50ms() interrupt 1
+  52          {
+  53                  TH0=(65536-50000)/256;
+  54                  TL0=(65536-50000)%256;
+  55                  count_interrupt_1++;
+C51 COMPILER V7.10   CK2                                                                   03/25/2013 17:47:32 PAGE 2   
+
+  56          }*/
+  57          void Timer_ET2_50ms() interrupt 5//延时50ms
+  58          {
+  59   1              TF2=0;
+  60   1              timer++;
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    268    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

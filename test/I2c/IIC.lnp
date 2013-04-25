@@ -1,0 +1,5 @@
+"STARTUP.obj",
+"main.obj",
+"Iic.obj" 
+TO "IIC" 
+RAMSIZE(256) 

@@ -1,0 +1,122 @@
+C51 COMPILER V9.00   PWM                                                                   04/03/2013 03:00:37 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE PWM
+OBJECT MODULE PLACED IN pwm.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE pwm.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "normal.h"
+   2          #include "led_4.h"
+   3          uchar OFF=0xff;  //关
+   4          uchar ON=0xfe;           //开
+   5          uchar PWM=0;
+   6          uchar timer=0;
+   7          void SetTimer0(void);
+   8          void SetTimer2(void);
+   9          int main(void)
+  10          {
+  11   1              bit flag=1;
+  12   1              uchar flag2=0;
+  13   1              uchar flag3=0;
+  14   1              SetTimer0();
+  15   1              SetTimer2();
+  16   1              P1=OFF;
+  17   1              while(1)
+  18   1              {
+  19   2                      bit temp=flag;
+  20   2                      if(timer==2)
+  21   2                      {
+  22   3                              if(flag)
+  23   3                              {
+  24   4                                      PWM++;
+  25   4                                      if(PWM==100)
+  26   4                                              flag=~flag;
+  27   4                              }
+  28   3                              else
+  29   3                              {
+  30   4                                      PWM--;
+  31   4                                      if(PWM==0)
+  32   4                                              flag=~flag;
+  33   4                              }
+  34   3                              Led_set(PWM);
+  35   3                              timer=0;
+  36   3                              if(temp!=flag)
+  37   3                                      flag2++;
+  38   3                              if(flag2==2)
+  39   3                              {
+  40   4                                      if(flag3<7)
+  41   4                                      {
+  42   5                                              ON=~ON;
+  43   5                                              ON<<=1;
+  44   5                                              ON=~ON;
+  45   5                                      }
+  46   4                                      else
+  47   4                                      {
+  48   5                                              ON=~ON;
+  49   5                                              ON>>=1;
+  50   5                                              ON=~ON;
+  51   5                                      }
+  52   4                                      P1=OFF;
+  53   4                                      flag3++;
+  54   4                                      if(flag3==14)
+  55   4                                                      flag3=0;
+C51 COMPILER V9.00   PWM                                                                   04/03/2013 03:00:37 PAGE 2   
+
+  56   4                                      flag2=0;
+  57   4                              }
+  58   3                      }
+  59   2                      Led_display(LED_Buffer);
+  60   2              }
+  61   1      }
+  62          void Timer0(void) interrupt 1//定时器0
+  63          {
+  64   1                 static uint t=0;
+  65   1                 if(100==t)
+  66   1                 {
+  67   2                              t=0;
+  68   2                              P1=ON;
+  69   2                 }
+  70   1                 else if(t==PWM)
+  71   1                 {
+  72   2                              P1=OFF;
+  73   2                 }
+  74   1                 t++;
+  75   1      }
+  76          void Timer2(void) interrupt 5 //定时器2
+  77          {
+  78   1              timer++;
+  79   1              TF2=0;
+  80   1      }
+  81          void SetTimer0(void)   //设置定时器0
+  82          {
+  83   1              TMOD=0x02;   //定时器0，工作模式2，8位定时模式 
+  84   1              TH0=100;     //写入预置初值（取值1-255，数越大PWM频率越高）
+  85   1              TL0=100;     //写入预置值 （取值1-255，数越大PWM频率越高）
+  86   1              TR0=1;       //启动定时器 
+  87   1              ET0=1;       //允许定时器0中断
+  88   1              EA=1;            //开启总中断
+  89   1      }
+  90          void SetTimer2(void)   //设置定时器2
+  91          {
+  92   1              RCAP2H=19456/256;//高8位
+  93   1              RCAP2L=19456%256;//低8位
+  94   1              TR2=1;  //启动定时器2
+  95   1              ET2=1;  //允许定时器2中断
+  96   1              EA=1;   //开启总中断
+  97   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    439    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,254 @@
+C51 COMPILER V9.00   DA_AD                                                                 04/16/2013 12:22:03 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE DA_AD
+OBJECT MODULE PLACED IN DA-AD.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DA-AD.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          * AD PCF8591
+   3          *
+   4          * 旋转电位器，串口助手将收到不同的数据
+   5          */
+   6          #include <reg52.h>
+   7          #include <intrins.h>
+   8          #include "normal.h"
+   9          #include "led_4.h"
+  10          #include "Iic.h"
+*** WARNING C173 IN LINE 83 OF IIC.H: missing return-expression
+  11          typedef unsigned char uint8;
+  12          typedef unsigned int uint16;
+  13          
+  14          #define SLAVEADDR  0x90
+  15          #define nops()  do{_nop_();_nop_();_nop_();_nop_();_nop_();} while(0) //定义空指令
+  16          
+  17          
+  18          //sbit SCL = P2^6;       //I2C  时钟 
+  19          //sbit SDA = P2^7;       //I2C  数据 
+  20          uint8 timer=0;
+  21          /**
+  22          * 函数: i2c_start()
+  23          * 功能: 启动i2c
+  24          */
+  25          void i2c_start()
+  26          {
+  27   1              SCL = 1;
+  28   1              nops();
+  29   1              SDA = 1;
+  30   1              nops();
+  31   1              SDA = 0;
+  32   1              nops();
+  33   1              SCL = 0;
+  34   1      }
+  35          
+  36          /**
+  37          * 函数: i2c_stop()
+  38          * 功能: 停止i2c
+  39          */
+  40          void i2c_stop()
+  41          {
+  42   1              SCL = 0;
+  43   1              nops();
+  44   1              SDA = 0;
+  45   1              nops();
+  46   1              SCL = 1;
+  47   1              nops();
+  48   1              SDA = 1;
+  49   1              nops();
+  50   1      }
+  51          
+  52          /**
+  53          * 函数: i2c_ACK(bit ck)
+  54          * 功能: ck为1时发送应答信号ACK,
+C51 COMPILER V9.00   DA_AD                                                                 04/16/2013 12:22:03 PAGE 2   
+
+  55          *       ck为0时不发送ACK
+  56          */
+  57          void i2c_ACK(bit ck)
+  58          {
+  59   1          if (ck)
+  60   1                      SDA = 0;
+  61   1          else
+  62   1                      SDA = 1;
+  63   1          nops();
+  64   1          SCL = 1;
+  65   1          nops();
+  66   1          SCL = 0;
+  67   1              nops();
+  68   1          SDA = 1;
+  69   1          nops();
+  70   1      }
+  71          
+  72          /**
+  73          * 函数: i2c_waitACK()
+  74          * 功能: 返回为0时收到ACK
+  75          *       返回为1时没收到ACK
+  76          */
+  77          bit i2c_waitACK()
+  78          {
+  79   1              SDA = 1;
+  80   1              nops();
+  81   1              SCL = 1;
+  82   1              nops();
+  83   1              if (SDA)
+  84   1              {   
+  85   2                      SCL = 0;
+  86   2                      i2c_stop();
+  87   2                      return 1;
+  88   2              }
+  89   1              else
+  90   1              {  
+  91   2                      SCL = 0;
+  92   2                      return 0;
+  93   2              }
+  94   1      }
+  95          
+  96          /**
+  97          * 函数: i2c_sendbyte(uint8 bt)
+  98          * 功能: 将输入的一字节数据bt发送
+  99          */
+ 100          void i2c_sendbyte(uint8 bt)
+ 101          {
+ 102   1          uint8 i;
+ 103   1          
+ 104   1          for(i=0; i<8; i++)
+ 105   1          {  
+ 106   2              if (bt & 0x80) 
+ 107   2                              SDA = 1;
+ 108   2              else 
+ 109   2                              SDA = 0;
+ 110   2              nops();
+ 111   2              SCL = 1;
+ 112   2              bt <<= 1;
+ 113   2              nops();       
+ 114   2              SCL = 0;
+ 115   2          }
+ 116   1      }
+C51 COMPILER V9.00   DA_AD                                                                 04/16/2013 12:22:03 PAGE 3   
+
+ 117          
+ 118          /**
+ 119          * 函数: i2c_recbyte( )
+ 120          * 功能: 从总线上接收1字节数据
+ 121          */
+ 122          uint8 i2c_recbyte()
+ 123          {
+ 124   1              uint8 dee, i;
+ 125   1              
+ 126   1              for (i=0; i<8; i++)
+ 127   1              {
+ 128   2                      SCL = 1;    
+ 129   2                      nops();
+ 130   2                      dee <<= 1;
+ 131   2                      if (SDA) 
+ 132   2                              dee = dee | 0x01;
+ 133   2                      SCL = 0;
+ 134   2                      nops();
+ 135   2              }
+ 136   1              
+ 137   1              return dee;
+ 138   1      }
+ 139          
+ 140          /**
+ 141          * 函数: i2c_readbyte
+ 142          * 输入: addr
+ 143          * 功能: 读出一字节数据
+ 144          * 返回值: 0->成功  1->失败
+ 145          */
+ 146          bit i2c_readbyte(uint8 com, uint8 *dat)
+ 147          {        
+ 148   1              i2c_start();
+ 149   1              i2c_sendbyte(SLAVEADDR);    //地址
+ 150   1          if (i2c_waitACK())
+ 151   1                      return 1;
+ 152   1              i2c_sendbyte(com);        //控制字节
+ 153   1          if (i2c_waitACK())
+ 154   1                      return 1;
+ 155   1              i2c_start();
+ 156   1              i2c_sendbyte(SLAVEADDR+1); //地址
+ 157   1          if (i2c_waitACK())
+ 158   1                      return 1;
+ 159   1              *dat = i2c_recbyte();      //读数据
+ 160   1              i2c_ACK(0);                //因为只读一字节数据，不发送ACK信号
+ 161   1              i2c_stop();   
+ 162   1              
+ 163   1              return 0;
+ 164   1      }
+ 165          
+ 166          /**
+ 167          * UART初始化
+ 168          * 波特率：9600
+ 169          */
+ 170          void uart_init(void)
+ 171          {
+ 172   1          ET1=0;
+ 173   1          TMOD = 0x21;        // 定时器1工作在方式2（自动重装）
+ 174   1          SCON = 0x50;        // 10位uart，允许串行接受
+ 175   1      
+ 176   1          TH1 = 0xFD;
+ 177   1          TL1 = 0xFD;
+ 178   1      
+C51 COMPILER V9.00   DA_AD                                                                 04/16/2013 12:22:03 PAGE 4   
+
+ 179   1          TR1 = 1;
+ 180   1      }
+ 181          
+ 182          /**
+ 183          * UART 发送一字节
+ 184          */
+ 185          void UART_Send_Byte(uint8 dat)
+ 186          {
+ 187   1              SBUF = dat;
+ 188   1              while (TI == 0);
+ 189   1              TI = 0;
+ 190   1      }
+ 191          void set_timer(void)
+ 192          {
+ 193   1              RCAP2H=19456/256;
+ 194   1              RCAP2L=19456%256;
+ 195   1              ET2=1;          //开定时器2中断
+ 196   1              TR2=1;          //开启定时器，并设置为自动重装载模式
+ 197   1              EA=1;
+ 198   1      }
+ 199          void Timer_ET2_50ms() interrupt 5//延时50ms
+ 200          {
+ 201   1              TF2=0;
+ 202   1              timer++;
+ 203   1      }
+ 204          
+ 205          main()
+ 206          {
+ 207   1              uint8 ans;
+ 208   1                      set_timer();
+ 209   1              uart_init();
+ 210   1              while(1)
+ 211   1              {
+ 212   2      
+ 213   2                      if(timer>10)
+ 214   2                                      {
+ 215   3                                              i2c_readbyte(0x41, &ans);
+ 216   3                                              UART_Send_Byte(ans);
+ 217   3                                              timer=0;
+ 218   3                                      }
+ 219   2                              Led_set(ans);
+ 220   2                      Led_display(LED_Buffer);
+ 221   2                      Delay(1);
+ 222   2              }
+ 223   1      } 
+*** WARNING C290 IN LINE 83 OF DA-AD.C: missing return value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    666    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

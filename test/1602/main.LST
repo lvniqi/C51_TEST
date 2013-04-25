@@ -1,0 +1,120 @@
+C51 COMPILER V9.00   MAIN                                                                  04/22/2013 11:17:12 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"normal.h"
+   2          #include"1602.h"
+   3          #include"timer.h"
+   4          #include"Iic.h"
+   5          #include"At24.h"
+   6          /********************************************************************
+   7          * 名称 : void Write_Time(uchar num)
+   8          * 功能 : 写入一个数
+   9          * 输入 : uchar num                  
+  10          * 输出 : 无
+  11          ***********************************************************************/
+  12          void Write_Time(uchar num)
+  13          {
+  14   1              char T []="00";
+  15   1              T[1]=num%10+'0';
+  16   1              num/=10;
+  17   1              T[0]=num+'0';
+  18   1              puts(T);        
+  19   1      }
+  20          /********************************************************************
+  21          * 名称 : void write(uchar* time)
+  22          * 功能 : 写入时间
+  23          * 输入 : uchar *s                   
+  24          * 输出 : 无
+  25          ***********************************************************************/
+  26          void Write_Array(uchar* time)
+  27          {
+  28   1              Write_Time(time[0]);
+  29   1              Lcd_Write(':',1);
+  30   1              Write_Time(time[1]);
+  31   1              Lcd_Write(':',1);
+  32   1              Write_Time(time[2]);                    
+  33   1      }
+  34          /********************************************************************
+  35          * 名称 : void Display_Time()
+  36          * 功能 : 显示时间
+  37          * 输入 : 无                 
+  38          * 输出 : 无
+  39          ***********************************************************************/
+  40          void Display_Time(char *t)
+  41          {
+  42   1              if(timer==20)
+  43   1                      {
+  44   2                              timer=0;
+  45   2                              Delay(90);
+  46   2                              Lcd_Write(0x80+0x40,0);//光标指针
+  47   2                              t[2]++;
+  48   2                              AT24_Send(2,t[2]);
+  49   2                              if(60<=t[2])
+  50   2                              {
+  51   3                                      t[2]-=60;
+  52   3                                      t[1]+=1;
+  53   3                                      Delay(90);
+  54   3                                      AT24_Send(1,t[1]);
+  55   3                                      if(t[1]>=60)
+C51 COMPILER V9.00   MAIN                                                                  04/22/2013 11:17:12 PAGE 2   
+
+  56   3                                      {
+  57   4                                              t[1]-=60;
+  58   4                                              t[0]++;
+  59   4                                              Delay(90);
+  60   4                                              AT24_Send(0,t[0]);
+  61   4                                              if(t[0]>=24)
+  62   4                                              {
+  63   5                                                      t[0]-=24;
+  64   5                                                      Delay(90);
+  65   5                                              }
+  66   4                                      }
+  67   3                              }
+  68   2                              Write_Array(t);
+  69   2                      }                                                                         
+  70   1      }
+  71          int main(void)
+  72          {
+  73   1              uchar t[3];
+  74   1              uchar a[]="Hollo World!";
+  75   1              Iic_Start();
+  76   1              t[0]=AT24_Read(0);
+  77   1              Delay(90);
+  78   1              t[1]=AT24_Read(1);
+  79   1              Delay(90);
+  80   1              t[2]=AT24_Read(2);
+  81   1              Delay(90);
+  82   1              set_timer();
+  83   1              Lcd_Write(0x38,0);//显示模式设置
+  84   1              Lcd_Write(0x0c,0);//显示开关
+  85   1              Lcd_Write(0x06,0);//光标设置
+  86   1              Lcd_Write(0x80,0);//光标指针
+  87   1              puts(a);
+  88   1              Lcd_Write(0x80+0x40,0);//光标指针
+  89   1              timer=0;
+  90   1              while(1)
+  91   1              {
+  92   2                      Display_Time(t);
+  93   2              }
+  94   1              return 0;
+  95   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    888    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7      30
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

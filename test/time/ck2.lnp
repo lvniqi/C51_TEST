@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"ck2.obj" 
+TO "ck2" 
+RAMSIZE(256) 

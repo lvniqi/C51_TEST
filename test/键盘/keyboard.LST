@@ -1,0 +1,41 @@
+C51 COMPILER V7.10   KEYBOARD                                                              03/24/2013 17:59:32 PAGE 1   
+
+
+C51 COMPILER V7.10, COMPILATION OF MODULE KEYBOARD
+OBJECT MODULE PLACED IN keyboard.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE keyboard.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          #include"normal.h"
+   4          #include"led_4.h"
+   5          #include"key.h"
+   6          int main(void)
+   7          {
+   8   1              uint i,j,k,t,n=0;
+   9   1              while(1)
+  10   1              {
+  11   2                      Led_set(Keys(keys));
+  12   2                      Led_display();
+  13   2              }
+  14   1      }
+*** WARNING C280 IN LINE 8 OF KEYBOARD.C: 'i': unreferenced local variable
+*** WARNING C280 IN LINE 8 OF KEYBOARD.C: 'j': unreferenced local variable
+*** WARNING C280 IN LINE 8 OF KEYBOARD.C: 'k': unreferenced local variable
+*** WARNING C280 IN LINE 8 OF KEYBOARD.C: 't': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    427    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      20
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  4 WARNING(S),  0 ERROR(S)

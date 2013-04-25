@@ -1,0 +1,55 @@
+C51 COMPILER V9.00   MAIN                                                                  04/17/2013 17:53:53 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"normal.h"
+   2          #include"led_4.h"
+   3          #include"Iic.h"
+   4          #include"At24.h"
+   5          #include"key.h"
+   6          #include"timer.h"
+   7          int main(void)
+   8          {
+   9   1              int i=AT24_Read(0);
+  10   1              uchar a[32]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+  11   1              Led_set(AT24_Read(i+8));
+  12   1              set_timer();
+  13   1              AT24_Send_Page(8,a,20);
+  14   1              Delay(90);
+  15   1              while(1)
+  16   1              {
+  17   2                      if(timer==10)
+  18   2                      {
+  19   3                              timer=0;
+  20   3                              if(i<18)
+  21   3                              {
+  22   4                                      Led_set(AT24_Read(i+8));
+  23   4                                      i++;
+  24   4                                      AT24_Send(0,i);
+  25   4                              }
+  26   3                              else
+  27   3                                      i=0;
+  28   3                      }
+  29   2                      Led_display();
+  30   2              }
+  31   1              return 0;
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    849    ----
+   CONSTANT SIZE    =     48    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     15      51
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

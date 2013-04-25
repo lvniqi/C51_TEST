@@ -1,0 +1,32 @@
+C51 COMPILER V7.10   BELL                                                                  03/10/2013 10:57:25 PAGE 1   
+
+
+C51 COMPILER V7.10, COMPILATION OF MODULE BELL
+OBJECT MODULE PLACED IN bell.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE bell.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          sbit bell=P1^4;
+   3          int main(void)
+   4          {
+   5   1              while(1)
+   6   1              {
+   7   2                      bell=0;
+   8   2              }
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      4    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,418 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+e:\test\1602\1602.uvproj
+Project File Date:  04/17/2013
+
+<h2>Output:</h2>
+compiling main.c...
+MAIN.C(43): error C202: 'timer': undefined identifier
+MAIN.C(45): error C202: 'timer': undefined identifier
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+MAIN.C(83): warning C206: 'set_timer': missing function-prototype
+MAIN.C(90): error C202: 'timer': undefined identifier
+main.c - 1 Error(s), 1 Warning(s).
+compiling main.c...
+MAIN.C(83): warning C206: 'set_timer': missing function-prototype
+MAIN.C(93): warning C206: 'Display_Time': missing function-prototype
+MAIN.C(93): error C267: 'Display_Time': requires ANSI-style prototype
+main.c - 1 Error(s), 2 Warning(s).
+compiling main.c...
+MAIN.C(83): warning C206: 'set_timer': missing function-prototype
+main.c - 0 Error(s), 1 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(83): warning C206: 'set_timer': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_WRITE_ARRAY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  SET_TIMER
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  SET_TIMER
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 020BH
+Program Size: data=46.2 xdata=0 code=1202
+creating hex file from "1602"...
+"1602" - 0 Error(s), 9 Warning(s).
+compiling main.c...
+main.c(4): warning C315: unknown #directive 'inclcue'
+MAIN.C(44): error C202: 'timer': undefined identifier
+MAIN.C(46): error C202: 'timer': undefined identifier
+main.c - 2 Error(s), 1 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+main.c - 2 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(37): error C141: syntax error near 'unsigned', expected ')'
+AT24.H(43): error C202: 'page_address': undefined identifier
+AT24.H(45): error C141: syntax error near 'char'
+AT24.H(45): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(46): error C202: 'len': undefined identifier
+AT24.H(55): error C202: 'page_address': undefined identifier
+AT24.H(58): error C202: 'num': undefined identifier
+AT24.H(62): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(86): error C141: syntax error near '&'
+AT24.H(86): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(45): error C141: syntax error near 'char'
+AT24.H(45): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(62): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(86): error C141: syntax error near '&'
+AT24.H(86): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(14): error C141: syntax error near '&'
+AT24.H(14): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(46): error C141: syntax error near 'char'
+AT24.H(46): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(63): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(87): error C141: syntax error near '&'
+AT24.H(87): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(46): error C141: syntax error near 'char'
+AT24.H(46): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(63): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(87): error C141: syntax error near '&'
+AT24.H(87): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(46): error C141: syntax error near 'char'
+AT24.H(46): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(63): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(87): error C141: syntax error near '&'
+AT24.H(87): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+目标未创建
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+目标未创建
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'static'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'static'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'static'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'static'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(53): error C200: left side of '->' requires struct/union pointer
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+main.c - 1 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(47): error C141: syntax error near 'char'
+AT24.H(47): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C202: 'PT_YIELD_FLAG': undefined identifier
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+目标未创建
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+AT24.H(73): error C141: syntax error near 'unsigned'
+main.c - 3 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(65): error C231: 'Iic_End': redefinition
+AT24.H(66): error C141: syntax error near '}'
+main.c - 5 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+AT24.H(64): error C141: syntax error near ';'
+AT24.H(64): error C141: syntax error near ')'
+main.c - 2 Error(s), 0 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(87): error C141: syntax error near '&'
+AT24.H(87): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=52.2 xdata=0 code=1623
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '->'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '->'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C141: syntax error near '&'
+AT24.H(15): error C129: missing ';' before ')'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=52.2 xdata=0 code=1623
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=52.2 xdata=0 code=1623
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C129: missing ';' before '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C231: 'p1': redefinition
+AT24.H(15): error C141: syntax error near '.'
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C231: 'p1': redefinition
+目标未创建
+Build target '目标 1'
+compiling main.c...
+AT24.H(15): error C231: 'p12': redefinition
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+AT24.H(15): error C231: 'p132': redefinition
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=52.2 xdata=0 code=1623
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).
+compiling main.c...
+MAIN.C(9): error C231: 'p132': redefinition
+main.c - 1 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=54.2 xdata=0 code=1631
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SET_TIMER_0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_?WRITE_NUM?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AT24_SEND_PAGE?MAIN
+Program Size: data=46.2 xdata=0 code=1472
+creating hex file from "1602"...
+"1602" - 0 Error(s), 4 Warning(s).

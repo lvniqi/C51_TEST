@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"bell.obj" 
+TO "bell" 
+RAMSIZE(256) 

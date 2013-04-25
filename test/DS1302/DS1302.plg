@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+e:\test\DS1302\DS1302.uvproj
+Project File Date:  04/24/2013
+
+<h2>Output:</h2>
+Build target 'ƒø±Í 1'
+assembling STARTUP.A51...
+compiling DS1302 ±÷”–æ∆¨ µ—È2.C...
+DS1302 ±÷”–æ∆¨ µ—È2.C(105): warning C206: 'OutputByte': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?DS1302 ±_”–æ∆¨ µ—È2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LED_SET_16?DS1302 ±_”–æ∆¨ µ—È2
+Program Size: data=41.0 xdata=0 code=1128
+creating hex file from "DS1302"...
+"DS1302" - 0 Error(s), 3 Warning(s).
+Build target 'ƒø±Í 1'
+assembling STARTUP.A51...
+compiling DS1302 ±÷”–æ∆¨ µ—È2.C...
+DS1302 ±÷”–æ∆¨ µ—È2.C(105): warning C206: 'OutputByte': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?DS1302 ±_”–æ∆¨ µ—È2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LED_SET_16?DS1302 ±_”–æ∆¨ µ—È2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITIAL_DS1302?DS1302 ±_”–æ∆¨ µ—È2
+Program Size: data=41.0 xdata=0 code=1125
+creating hex file from "DS1302"...
+"DS1302" - 0 Error(s), 4 Warning(s).
+Build target 'ƒø±Í 1'
+assembling STARTUP.A51...
+compiling DS1302 ±÷”–æ∆¨ µ—È2.C...
+DS1302 ±÷”–æ∆¨ µ—È2.C(105): warning C206: 'OutputByte': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?DS1302 ±_”–æ∆¨ µ—È2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LED_SET_16?DS1302 ±_”–æ∆¨ µ—È2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITIAL_DS1302?DS1302 ±_”–æ∆¨ µ—È2
+Program Size: data=41.0 xdata=0 code=1125
+creating hex file from "DS1302"...
+"DS1302" - 0 Error(s), 4 Warning(s).
